@@ -3,6 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
+  "author": {
+    "name": "Pawel Borkar",
+    "email": "pawel@duck.com",
+    "url": "https://pawel.in"
+  },
+  "repository": {
+    "url": "git+https://github.com/pawelborkar/livecode"
+  },
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
