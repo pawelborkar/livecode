@@ -1,10 +1,10 @@
-import Auth from './components/Auth/Auth';
+import { Tabs } from './components';
 
 function App() {
   return (
-    <div>
-      <Auth />
-    </div>
+    <>
+      <Tabs />
+    </>
   );
 }
 

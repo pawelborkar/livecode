@@ -1,27 +1,44 @@
-# React + TypeScript + Vite
+### Specifications
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+- Landing Page
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Login Functionality
 
-## Expanding the ESLint configuration
+- File Explorer
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- CRUD Files to File Explorer
 
-- Configure the top-level `parserOptions` property like this:
+- Tabs
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Editor Inside Tab
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Code Execution
+
+- Copy invite link
+
+- Integrate Judge0
+
+- Display Judge0 response
+
+- Integrate Socket.io to achieve realtime collaboration.
+
+- Logout
+
+<br>
+
+---
+
+> Good to Haves:
+> <br>
+
+- Terminal
+
+---
+
+### Refs.:
+
+- [Code Online](https://github.com/NayanPatil1998/Code_online)
+
+- [React Code Editor with Judge0](https://github.com/manuarora700/react-code-editor)

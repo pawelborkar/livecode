@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import {
   Tabs,
   Tab,
@@ -12,10 +12,10 @@ import {
 } from '@nextui-org/react';
 
 const Auth = () => {
-  const [selected, setSelected] = React.useState('login');
+  const [selected, setSelected] = useState('login');
 
   return (
-    <div className="dark flex flex-col  justify-center items-center bg-[url('src/assets/bg.jpg')]   h-screen w-screen blur-50  ">
+    <div className="dark flex flex-col justify-center items-center bg-[url('src/assets/bg.jpg')]   h-screen w-screen blur-50">
       <Card className="opacity-90 z-30 max-w-full w-[340px] h-[480px]">
         <CardHeader className="flex flex-col justify-center items-center">
           <Image width={50} alt="Logo" src="src/assets/logo.png" />
@@ -33,7 +33,7 @@ const Auth = () => {
               <form className="flex flex-col gap-4">
                 <Input
                   isRequired
-                  label="Email" 
+                  label="Email"
                   placeholder="Enter your email"
                   type="email"
                 />
