@@ -1,7 +1,5 @@
 ### Specifications
 
----
-
 - Landing Page
 
 - Login Functionality
@@ -26,18 +24,15 @@
 
 - Logout
 
-<br>
-
 ---
 
-> Good to Haves:
-> <br>
+### Good to Haves:
 
 - Terminal
 
 ---
 
-### Refs.:
+> Refs.:
 
 - [Code Online](https://github.com/NayanPatil1998/Code_online)
 
