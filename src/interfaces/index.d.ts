@@ -3,3 +3,6 @@ export interface ITab {
   title: string;
   language: string;
 }
+export interface IEditor {
+  language: string;
+}

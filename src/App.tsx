@@ -1,10 +1,10 @@
-import { Tabs } from './components';
+import { Playground } from './components';
 
 function App() {
   return (
-    <>
-      <Tabs />
-    </>
+    <div className="h-screen">
+      <Playground />
+    </div>
   );
 }
 

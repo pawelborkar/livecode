@@ -1,12 +1,13 @@
 import MonacoEditor from '@monaco-editor/react';
-const Editor = () => {
+import { IEditor } from '../../interfaces';
+const Editor = ({ language }: IEditor) => {
   return (
     <MonacoEditor
-      height="70vh"
-      width="80vw"
+      options={{ fontSize: 20, smoothScrolling: true }}
       theme="vs-dark"
-      defaultLanguage="javascript"
-      defaultValue="console.log('Pawel')"
+      height={'94vh'}
+      width={'62vw'}
+      language={language}
     />
   );
 };

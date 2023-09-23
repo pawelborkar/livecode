@@ -1,5 +1,9 @@
 const FileExplorer = () => {
-  return <div className="flex w-80 h-full bg-violet-950">FileExplorer</div>;
+  return (
+    <div className="flex w-1/6 h-100 text-white bg-[#140f36]">
+      
+    </div>
+  );
 };
 
 export default FileExplorer;
