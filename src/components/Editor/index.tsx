@@ -6,7 +6,7 @@ const Editor = ({ language }: IEditor) => {
       options={{ fontSize: 20, smoothScrolling: true }}
       theme="vs-dark"
       height={'94vh'}
-      width={'62vw'}
+      width={'100vw'}
       language={language}
     />
   );

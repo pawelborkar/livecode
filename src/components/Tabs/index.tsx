@@ -8,7 +8,7 @@ const Tabs = () => {
   const [openedTabs] = useAtom(tabsAtom);
 
   return (
-    <div className="flex flex-col items-start h-full w-4/6 text-lg ">
+    <div className="flex flex-col resize-y items-start h-full text-lg ">
       <Tabslist color="primary" variant="solid" fullWidth aria-label="Options">
         {openedTabs.map((tab: ITab) => {
           return (
