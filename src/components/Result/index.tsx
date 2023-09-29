@@ -5,7 +5,7 @@ const Result = () => {
   return (
     <div className="flex flex-col h-screen w-full overflow-hidden">
       <PanelGroup autoSaveId="example" direction="vertical">
-        <Panel collapsible={true} order={1} >
+        <Panel collapsible={true} order={1}>
           <Card className="py-4 h-full">
             <CardHeader className="pb-0 pt-2 px-4 flex-col items-start">
               <h4 className="font-bold text-large">Result</h4>
@@ -22,7 +22,6 @@ const Result = () => {
             <CardBody className="overflow-visible py-1"></CardBody>
           </Card>
         </Panel>
-        <ResizeHandle />
       </PanelGroup>
     </div>
   );

@@ -1,11 +1,21 @@
-import { Image } from '@nextui-org/react';
+import { useAtom } from 'jotai';
+import AddFile from './AddFile';
+import { filesAtom } from '../../globalStates';
+import { Listbox, ListboxItem } from '@nextui-org/react';
+import ListboxWrapper from './ListboxWrapper';
+
 const FileExplorer = () => {
+  const [files] = useAtom(filesAtom);
   return (
-    <div className="flex flex-col  items-center w-100 h-full text-white bg-[#140f36]">
-      <div className="flex  mt-10 flex-col items-center">
-        <Image width={50} alt="Logo" src="src/assets/logo.png" />
-        <h2 className="p-4 text-xl font-bold">LiveCode</h2>
-      </div>
+    <div className="flex flex-col items-center w-100 h-full text-white bg-[#140f36]">
+      <AddFile />
+      <ListboxWrapper>
+        {files.map((file) => (
+          <Listbox aria-label={file.title}>
+            <ListboxItem key={file.id}>{file.title}</ListboxItem>
+          </Listbox>
+        ))}
+      </ListboxWrapper>
     </div>
   );
 };
