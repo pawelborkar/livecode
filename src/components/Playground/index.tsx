@@ -3,7 +3,11 @@ import { FileExplorer, Tabs, Result, ResizeHandle } from '..';
 const Playground = () => {
   return (
     <div>
-      <PanelGroup autoSaveId="example" direction="horizontal">
+      <PanelGroup
+        autoSaveId="example"
+        direction="horizontal"
+        className="h-screen"
+      >
         <Panel
           className="flex flex-col"
           collapsible={true}

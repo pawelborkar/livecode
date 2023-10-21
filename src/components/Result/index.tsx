@@ -3,7 +3,7 @@ import { Card, CardHeader, CardBody } from '@nextui-org/react';
 
 const Result = () => {
   return (
-    <div className="flex flex-col h-screen w-full overflow-hidden">
+    <div className="flex flex-col h-screen w-full overflow-auto">
       <PanelGroup autoSaveId="example" direction="vertical">
         {/* <Panel collapsible={true} order={1}>
           <Card className="py-4 h-full">
