@@ -9,10 +9,11 @@ const FileExplorer = () => {
   return (
     <div className="flex flex-col items-center w-100 h-full text-white bg-[#140f36]">
       <AddFile />
-      <ListboxWrapper>
+
+      <ListboxWrapper className="border-2">
         {files.map((file) => (
-          <Listbox aria-label={file.title}>
-            <ListboxItem key={file.id}>{file.title}</ListboxItem>
+          <Listbox aria-label={file.name}>
+            <ListboxItem key={file.id}>{file.name}</ListboxItem>
           </Listbox>
         ))}
       </ListboxWrapper>

@@ -1,11 +1,12 @@
 import { Card, Image, Input } from '@nextui-org/react';
 import { useAtom } from 'jotai';
 import { Check, File, FilePlus } from 'lucide-react';
-import { filesAtom } from '../../../globalStates';
+import { filesAtom, tabsAtom } from '../../../globalStates';
 import { useState } from 'react';
 const AddFile = () => {
   const [newFileName, setNewFileName] = useState('');
   const [files, setFiles] = useAtom(filesAtom);
+  const [, setOpenedTabs] = useAtom(tabsAtom);
   const [isCreatingFile, setIsCreatingFile] = useState<boolean>(false);
 
   const handleAddNewFile = () => {
@@ -13,10 +14,18 @@ const AddFile = () => {
 
     if (newFileName !== '') {
       const createNewFile = {
-        id: `${files.length + 1}`,
+        id: files.length + 1,
+        name: newFileName,
+      };
+      const language = newFileName.split('.');
+
+      const newTab = {
+        id: files.length + 1,
         title: newFileName,
+        language: language[1] === 'js' ? 'javascript' : language[1],
       };
       setFiles((files) => [...files, createNewFile]);
+      setOpenedTabs((tabs) => [...tabs, newTab]);
       setNewFileName('');
       setIsCreatingFile(false);
     }

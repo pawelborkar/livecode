@@ -1,8 +1,13 @@
 export interface ITab {
-  id: string;
+  id: number;
   title: string;
   language: string;
 }
 export interface IEditor {
   language: string;
+}
+
+export interface IFile {
+  id: number;
+  name: string;
 }

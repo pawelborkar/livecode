@@ -1,6 +1,5 @@
 import { Panel, PanelGroup } from 'react-resizable-panels';
 import { FileExplorer, Tabs, Result, ResizeHandle } from '..';
-// import styles from './ResizeHandle/styles.module.css';
 const Playground = () => {
   return (
     <div>
@@ -14,8 +13,12 @@ const Playground = () => {
           <FileExplorer />
         </Panel>
         <ResizeHandle />
-
-        <Panel className="flex flex-col" collapsible={true} order={2}>
+        <Panel
+          className="flex flex-col"
+          collapsible={true}
+          defaultSize={80}
+          order={2}
+        >
           <Tabs />
         </Panel>
         <ResizeHandle />
