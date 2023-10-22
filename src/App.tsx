@@ -1,4 +1,4 @@
-import { Playground } from './components';
+import { Playground } from './components/Tabs/Tabs';
 
 function App() {
   return (

@@ -1,8 +1,8 @@
 import { useAtom } from 'jotai';
-import AddFile from './AddFile';
+import AddFile from './AddFile/AddFile';
 import { filesAtom } from '../../globalStates';
 import { Listbox, ListboxItem } from '@nextui-org/react';
-import ListboxWrapper from './ListboxWrapper';
+import ListboxWrapper from './ListboxWrapper/ListboxWrapper';
 
 const FileExplorer = () => {
   const [files] = useAtom(filesAtom);

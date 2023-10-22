@@ -4,7 +4,7 @@ import { Excalidraw } from '@excalidraw/excalidraw';
 import { Editor as NotesEditor } from 'novel';
 import { tabsAtom } from '../../globalStates';
 import { ITab } from '../../interfaces';
-import { Editor } from '..';
+import { Editor } from '../../components';
 
 const Tabs = () => {
   const [openedTabs] = useAtom(tabsAtom);
