@@ -1,9 +1,13 @@
 import { Panel, PanelGroup } from 'react-resizable-panels';
-import { FileExplorer, Tabs, Result, ResizeHandle } from '..';
+import { FileExplorer, Tabs, Result, ResizeHandle } from '../Tabs/Tabs';
 const Playground = () => {
   return (
     <div>
-      <PanelGroup autoSaveId="example" direction="horizontal">
+      <PanelGroup
+        autoSaveId="example"
+        direction="horizontal"
+        className="h-screen"
+      >
         <Panel
           className="flex flex-col"
           collapsible={true}
