@@ -1,5 +1,5 @@
 import { Panel, PanelGroup } from 'react-resizable-panels';
-import { FileExplorer, Tabs, Result, ResizeHandle } from '../Tabs/Tabs';
+import { FileExplorer, Tabs, Result, ResizeHandle } from '../../components';
 const Playground = () => {
   return (
     <div>

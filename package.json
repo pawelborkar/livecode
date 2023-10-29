@@ -15,7 +15,7 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "format": "prettier --write .",
+    "format": "prettier --write src/*",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -26,9 +26,11 @@
     "jotai": "^2.4.2",
     "lucide-react": "^0.279.0",
     "monaco-themes": "^0.4.4",
+    "nanoid": "^5.0.2",
     "novel": "^0.1.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^4.11.0",
     "react-resizable-panels": "^0.0.55",
     "react-router-dom": "^6.16.0"
