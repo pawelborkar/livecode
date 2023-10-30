@@ -6,5 +6,5 @@ export const router = createBrowserRouter([
     path: '/',
     element: <Auth />,
   },
-  { path: '/playground', element: <Playground /> },
+  { path: '/playground/:roomId', element: <Playground /> },
 ]);

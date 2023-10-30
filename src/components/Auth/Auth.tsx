@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import toast from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import {
@@ -11,11 +10,11 @@ import {
 } from '@nextui-org/react';
 import { useAtom } from 'jotai';
 import { customRandom, random, urlAlphabet } from 'nanoid';
-import { userNameAtom } from '../../globalStates';
+import { roomIdAtom, userNameAtom } from '../../globalStates';
 
 const Auth = () => {
   const Navigate = useNavigate();
-  const [roomId, setRoomId] = useState<string>('');
+  const [roomId, setRoomId] = useAtom(roomIdAtom);
   const [username, setUsername] = useAtom(userNameAtom);
   const handleJoinRoom = () => {
     if (!roomId || !username) {
@@ -53,7 +52,7 @@ const Auth = () => {
               type="text"
               value={roomId}
               onChange={(e) => setRoomId(e.target.value)}
-              />
+            />
             <Input
               isRequired
               label="Full Name"

@@ -11,3 +11,10 @@ export interface IFile {
   id: number;
   name: string;
 }
+
+export interface IClient {
+  username: string;
+}
+export interface IRoomID {
+  roomId: string;
+}

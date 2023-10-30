@@ -2,7 +2,7 @@ import { Panel, PanelGroup } from 'react-resizable-panels';
 import { FileExplorer, Tabs, Result, ResizeHandle } from '../../components';
 const Playground = () => {
   return (
-    <div>
+    <div className="max-h-screen max-w-screen">
       <PanelGroup
         autoSaveId="example"
         direction="horizontal"

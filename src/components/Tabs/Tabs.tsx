@@ -10,10 +10,9 @@ const Tabs = () => {
   const [openedTabs] = useAtom(tabsAtom);
 
   return (
-    <div className="flex flex-col resize-y justify-center items-start h-full text-lg ">
+    <div className="flex flex-col resize-y justify-center items-start  max-h-fit text-lg ">
       <Tablist color="primary" variant="solid" fullWidth aria-label="Options">
         {openedTabs.map((tab: ITab) => {
-          console.log('tab', tab.language);
           return (
             <Tab key={tab.id} title={tab.title}>
               <Editor language={tab.language} />
@@ -25,10 +24,12 @@ const Tabs = () => {
           key={openedTabs.length + 1}
           title="whiteboard"
         >
-          <Excalidraw UIOptions={{ dockedSidebarBreakpoint: 200 }} />
+          <div className="w-full h-[92vh]">
+            <Excalidraw UIOptions={{ dockedSidebarBreakpoint: 200 }} />
+          </div>
         </Tab>
         <Tab className="w-full" key={openedTabs.length + 2} title="Notes">
-          <div className="w-full h-screen overflow-hidden">
+          <div className="w-full h-[92vh] overflow-hidden">
             <NotesEditor className="w-full h-full overflow-auto" />
           </div>
         </Tab>
