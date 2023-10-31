@@ -1,4 +1,4 @@
-import toast from 'react-hot-toast';
+import { customRandom, random, urlAlphabet } from 'nanoid';
 import { useNavigate } from 'react-router-dom';
 import {
   Input,
@@ -9,7 +9,7 @@ import {
   Image,
 } from '@nextui-org/react';
 import { useAtom } from 'jotai';
-import { customRandom, random, urlAlphabet } from 'nanoid';
+import toast from 'react-hot-toast';
 import { roomIdAtom, userNameAtom } from '../../globalStates';
 
 const Auth = () => {
@@ -32,13 +32,14 @@ const Auth = () => {
   };
 
   const handleInputEnter = (e: React.KeyboardEvent) => {
+    e.preventDefault();
     if (e.code === 'Enter') {
       handleJoinRoom();
     }
   };
 
   return (
-    <div className="dark flex flex-col justify-center items-center bg-[url('src/assets/bg.jpg')]   h-screen w-screen blur-50">
+    <div className="dark flex flex-col justify-center items-center bg-[url('https://images.pexels.com/photos/6985003/pexels-photo-6985003.jpeg?auto=compress&cs=tinysrgb&w=2400')] object-fit h-screen w-screen blur-50">
       <Card className="opacity-90 z-30 max-w-full w-[340px] h-[400px]">
         <CardHeader className="flex flex-col justify-center items-center">
           <Image width={50} alt="Logo" src="src/assets/logo.png" />

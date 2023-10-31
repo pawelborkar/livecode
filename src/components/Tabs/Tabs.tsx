@@ -2,20 +2,28 @@ import { useAtom } from 'jotai';
 import { Tabs as Tablist, Tab } from '@nextui-org/react';
 import { Excalidraw } from '@excalidraw/excalidraw';
 import { Editor as NotesEditor } from 'novel';
-import { tabsAtom } from '../../globalStates';
+import { activeTabAtom, tabsAtom } from '../../globalStates';
 import { ITab } from '../../interfaces';
 import { Editor } from '../../components';
 
-const Tabs = () => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const Tabs = ({ socketRef }: any) => {
   const [openedTabs] = useAtom(tabsAtom);
-
+  const [, setActiveTab] = useAtom(activeTabAtom);
   return (
     <div className="flex flex-col resize-y justify-center items-start  max-h-fit text-lg ">
-      <Tablist color="primary" variant="solid" fullWidth aria-label="Options">
+      <Tablist
+        color="primary"
+        variant="solid"
+        fullWidth
+        aria-label="Opened Tabs"
+        defaultSelectedKey={openedTabs.length}
+        onSelectionChange={(k) => setActiveTab(k.toString())}
+      >
         {openedTabs.map((tab: ITab) => {
           return (
             <Tab key={tab.id} title={tab.title}>
-              <Editor language={tab.language} />
+              <Editor socketRef={socketRef} language={tab.language} />
             </Tab>
           );
         })}
