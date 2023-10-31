@@ -3,6 +3,7 @@ import { Card, Input } from '@nextui-org/react';
 import { useAtom } from 'jotai';
 import { Check, File, FilePlus } from 'lucide-react';
 import { filesAtom, tabsAtom } from '../../../globalStates';
+import toast from 'react-hot-toast';
 const AddFile = () => {
   const [newFileName, setNewFileName] = useState('');
   const [files, setFiles] = useAtom(filesAtom);
@@ -19,10 +20,14 @@ const AddFile = () => {
       };
       const language = newFileName.split('.');
 
+      if (language.length <= 1) {
+        toast.error('Please provide filename extension');
+        return
+      }
       const newTab = {
         id: files.length + 1,
         title: newFileName,
-        language: language[1] === 'js' ? 'javascript' : language[1],
+        language: language[1],
       };
       setFiles((files) => [...files, createNewFile]);
       setOpenedTabs((tabs) => [...tabs, newTab]);

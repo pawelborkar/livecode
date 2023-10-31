@@ -1,19 +1,14 @@
-import { useEffect, useRef, useState } from 'react';
 import ReactCodeMirror from '@uiw/react-codemirror';
-import { langs } from '@uiw/codemirror-extensions-langs';
-import { color } from '@uiw/codemirror-extensions-color';
-import { useAtom } from 'jotai';
-import { ACTIONS } from '../../utils/Actions';
 import { IEditor } from '../../interfaces';
-import { roomIdAtom } from '../../globalStates';
+import { langs } from '@uiw/codemirror-extensions-langs';
+import 'codemirror/keymap/sublime';
+import { useEffect, useRef, useState } from 'react';
 
 const EditorComponent = ({ language, socketRef }: IEditor) => {
-  const [roomId] = useAtom(roomIdAtom);
-
+  const editorRef = useRef(null);
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [lang, setLang] = useState<any>();
-  const [code, setCode] = useState('');
-  const codeMirrorRef = useRef(null);
+
   useEffect(() => {
     // Dynamically set the editor's language based on the file extension
 
@@ -168,31 +163,25 @@ const EditorComponent = ({ language, socketRef }: IEditor) => {
     }
   }, [language]);
 
-  const handleCodeChange = (value: string) => {
-    setCode(value);
+  const handleCodeChange = (value: unknown) => {
+    console.log('VALUE', value);
   };
 
-  useEffect(() => {
-    socketRef.current.emit(ACTIONS.CODE_CHANGE, {
-      roomId,
-      code,
-    });
-    socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
-      if (code !== null) {
-        setCode(code);
-      }
-    });
-  }, [code]);
+  // useEffect(() => {
+  //   editorRef?.current?.on('change', (instance, changes) => {
+  //     console.log('EDITOR', instance, changes);
+  //   });
+  // }, [editorRef]);
 
+  const code = ``;
   return (
     <ReactCodeMirror
-      onChange={(value) => handleCodeChange(value)}
+      onUpdate={(value) => handleCodeChange(value)}
       height="100vh"
       width="100vw"
       value={code}
       theme="dark"
-      extensions={[lang, color]}
-      ref={codeMirrorRef}
+      extensions={lang}
     />
   );
 };

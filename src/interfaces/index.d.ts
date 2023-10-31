@@ -5,6 +5,7 @@ export interface ITab {
 }
 export interface IEditor {
   language: string;
+  socketRef: unknown;
 }
 
 export interface IFile {
@@ -13,8 +14,12 @@ export interface IFile {
 }
 
 export interface IClient {
+  socketId?: string;
   username: string;
 }
 export interface IRoomID {
   roomId: string;
+}
+export interface IConnectedClients {
+  connectedClients: IClient[];
 }
