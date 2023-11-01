@@ -2,6 +2,7 @@ import http from 'node:http';
 import express from 'express';
 import { Server } from 'socket.io';
 import dotenv from 'dotenv';
+import { ACTIONS } from './utils/Actions.js';
 
 dotenv.config({
   path: '.env',
@@ -29,29 +30,35 @@ const getAllConnectedClients = (roomId) => {
 
 io.on('connection', (socket) => {
   // console.log('socket connected: ', socket.id);
-  socket.on('join', ({ roomId, username }) => {
-    userSocketMap[socket.id] = username;
+  socket.on(ACTIONS.JOIN, ({ roomId, username, files }) => {
+    userSocketMap[socket.id] = [username, files];
     socket.join(roomId);
     const clients = getAllConnectedClients(roomId);
     clients.forEach(({ socketId }) => {
-      io.to(socketId).emit('joined', {
+      io.to(socketId).emit(ACTIONS.JOINED, {
         clients,
         username,
         socketId: socket.id,
+        files,
       });
     });
   });
 
-  socket.on('code-change', ({ roomId, code }) => {
-    io.to(roomId).emit('code-change', { code });
+  socket.on(ACTIONS.CODE_CHANGE, ({ roomId, code }) => {
+    io.to(roomId).emit(ACTIONS.CODE_CHANGE, { code });
   });
-  
-  socket.on('disconnecting', () => {
+
+  socket.on(ACTIONS.FILE_ADD, ({ roomId, files }) => {
+    io.to(roomId).emit(ACTIONS.FILE_ADD, { files });
+  });
+
+  socket.on(ACTIONS.DISCONNECTING, () => {
     const rooms = [...socket.rooms];
     rooms.forEach((roomId) => {
-      socket.in(roomId).emit('disconnected', {
+      socket.in(roomId).emit(ACTIONS.DISCONNECTED, {
         socketId: socket.id,
-        username: userSocketMap[socket.id],
+        username: userSocketMap[socket.id][0],
+        files: userSocketMap[socket.id][1],
       });
     });
     delete userSocketMap[socket.id];
