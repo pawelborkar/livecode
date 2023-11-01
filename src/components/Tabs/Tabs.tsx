@@ -3,11 +3,11 @@ import { Tabs as Tablist, Tab } from '@nextui-org/react';
 import { Excalidraw } from '@excalidraw/excalidraw';
 import { Editor as NotesEditor } from 'novel';
 import { activeTabAtom, tabsAtom } from '../../globalStates';
-import { ITab } from '../../interfaces';
+import { ISocketChildComponentProps, ITab } from '../../interfaces';
 import { Editor } from '../../components';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-const Tabs = ({ socketRef }: any) => {
+const Tabs = ({ socketRef }: ISocketChildComponentProps) => {
   const [openedTabs] = useAtom(tabsAtom);
   const [, setActiveTab] = useAtom(activeTabAtom);
   return (

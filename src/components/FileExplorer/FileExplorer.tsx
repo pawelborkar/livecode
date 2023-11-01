@@ -8,13 +8,20 @@ import {
   connectedUsersAtom,
   filesAtom,
 } from '../../globalStates';
+import { IClient, ISocketChildComponentProps } from '../../interfaces';
 import logo from '../../assets/logo.png';
-import { IClient } from '../../interfaces';
+import { useEffect, useState } from 'react';
 
-const FileExplorer = () => {
+const FileExplorer = ({ socketRef }: ISocketChildComponentProps) => {
   const [files] = useAtom(filesAtom);
+  const [allFiles, setAllFiles] = useState(files);
   const [activeTab] = useAtom(activeTabAtom);
   const [clients] = useAtom(connectedUsersAtom);
+
+  useEffect(() => {
+    setAllFiles(files);
+  }, [files]);
+
   return (
     <div className="flex flex-col items-center w-100 h-full max-h-screen text-white bg-[#140f36]">
       <div className="flex  mt-10 mb-8 items-center">
@@ -22,11 +29,11 @@ const FileExplorer = () => {
         <p className="p-4 text-xl font-bold">LiveCode</p>
       </div>
       <div className="w-[66%] max-w-[300px] flex justify-around items-center">
-        <AddFile />
+        <AddFile socketRef={socketRef} />
       </div>
       <div className="h-full overflow-hidden w-full flex flex-col justify-between items-center">
         <ListboxWrapper className="border-2">
-          {files.map((file) => {
+          {allFiles?.map((file) => {
             const active =
               file.id === Number(activeTab)
                 ? 'bg-gradient-to-tr from-pink-500 to-red-500 text-white shadow-lg'

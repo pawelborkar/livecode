@@ -4,15 +4,14 @@ import { langs } from '@uiw/codemirror-extensions-langs';
 import { color } from '@uiw/codemirror-extensions-color';
 import { useAtom } from 'jotai';
 import { ACTIONS } from '../../utils/Actions';
-import { IEditor } from '../../interfaces';
+import { ICode, IEditor } from '../../interfaces';
 import { roomIdAtom } from '../../globalStates';
 
 const EditorComponent = ({ language, socketRef }: IEditor) => {
   const [roomId] = useAtom(roomIdAtom);
-
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [lang, setLang] = useState<any>();
-  const [code, setCode] = useState('');
+  const [code, setCode] = useState<ICode | string>('');
   const codeMirrorRef = useRef(null);
   useEffect(() => {
     // Dynamically set the editor's language based on the file extension
@@ -173,15 +172,17 @@ const EditorComponent = ({ language, socketRef }: IEditor) => {
   };
 
   useEffect(() => {
-    socketRef.current.emit(ACTIONS.CODE_CHANGE, {
-      roomId,
-      code,
-    });
-    socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
-      if (code !== null) {
-        setCode(code);
-      }
-    });
+    if (socketRef.current) {
+      socketRef.current.emit(ACTIONS.CODE_CHANGE, {
+        roomId,
+        code,
+      });
+      socketRef.current.on(ACTIONS.CODE_CHANGE, ({ code }) => {
+        if (code !== null) {
+          setCode(code);
+        }
+      });
+    }
   }, [code]);
 
   return (
