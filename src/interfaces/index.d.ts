@@ -1,3 +1,5 @@
+import { Socket } from 'socket.io-client';
+
 export interface ITab {
   id: number;
   title: string;
@@ -5,7 +7,7 @@ export interface ITab {
 }
 export interface IEditor {
   language: string;
-  socketRef: unknown;
+  socketRef: React.MutableRefObject<Socket | null>;
 }
 
 export interface IFile {
@@ -13,12 +15,28 @@ export interface IFile {
   name: string;
 }
 
+export interface ISocketRef {
+  current: Socket | null;
+}
+
+export interface ISocketChildComponentProps {
+  socketRef: React.MutableRefObject<Socket | null>;
+}
 export interface IClient {
   socketId?: string;
   username: string;
 }
+
+export interface ISocketResponse {
+  clients: IClient[];
+  username: string;
+  files: IFile[];
+}
 export interface IRoomID {
   roomId: string;
+}
+export interface ICode {
+  code: string;
 }
 export interface IConnectedClients {
   connectedClients: IClient[];
